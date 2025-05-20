@@ -7,7 +7,7 @@
   <title>Facturas Administración</title>
   <link rel="stylesheet" href="bootstrap/bootstrap-5.3.6-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/globaleStyle.css">
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="./manifest.json">
 </head>
 <body>
   <div class="container py-4">
@@ -132,7 +132,8 @@
   <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-  navigator.serviceWorker.register('/mi-pwa/service-worker.js')
+  navigator.serviceWorker.register('./service-worker.js')
+
 
 
         .then(function (registration) {
