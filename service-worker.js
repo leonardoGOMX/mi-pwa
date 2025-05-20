@@ -1,7 +1,7 @@
 const CACHE_NAME = 'facturagi-cache-v1';
 const URLS_TO_CACHE = [
   './',
-  './index.html',
+  '/index.html',
   './bootstrap/bootstrap-5.3.6-dist/css/bootstrap.min.css',
   './bootstrap/bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js',
   './css/globaleStyle.css',
