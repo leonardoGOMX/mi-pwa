@@ -18,7 +18,7 @@
     </div>
 
     <h2 class="mt-4">Datos del cliente</h2>
-    <form>
+    <form id="facturaForm">
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="rfc" class="form-label">RFC</label>
@@ -34,7 +34,7 @@
       <div class="mb-3">
         <select class="form-select text-center" name="regimen" id="regimen">
           <option selected disabled>Seleccione un régimen</option>
-          <option value="601">601 - REGIMEN GENERAL DE LEY PERSONAS MORALES</option>
+            <option value="601">601 - REGIMEN GENERAL DE LEY PERSONAS MORALES</option>
           <option value="602">602 - REGIMEN SIMPLIFICADO DE LEY PERSONAS MORALES</option>
           <option value="603">603 - PERSONAS MORALES CON FINES NO LUCRATIVOS</option>
           <option value="604">604 - REGIMEN DE PEQUENOS CONTRIBUYENTES</option>
@@ -51,100 +51,183 @@
 
       <h2 class="mt-4">Dirección</h2>
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Calle</label>
-          <input type="text" class="form-control" placeholder="Calle">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Número Exterior</label>
-          <input type="text" class="form-control" placeholder="Número Exterior">
-        </div>
+        <div class="col-md-6"><label class="form-label">Calle</label><input type="text" id="calle" class="form-control" placeholder="Calle"></div>
+        <div class="col-md-6"><label class="form-label">Número Exterior</label><input type="text" id="numExt" class="form-control" placeholder="Número Exterior"></div>
       </div>
 
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Número Interior</label>
-          <input type="text" class="form-control" placeholder="Número Interior">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Colonia</label>
-          <input type="text" class="form-control" placeholder="Colonia">
-        </div>
+        <div class="col-md-6"><label class="form-label">Número Interior</label><input type="text" id="numInt" class="form-control" placeholder="Número Interior"></div>
+        <div class="col-md-6"><label class="form-label">Colonia</label><input type="text" id="colonia" class="form-control" placeholder="Colonia"></div>
       </div>
 
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Localidad</label>
-          <input type="text" class="form-control" placeholder="Localidad">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Referencia</label>
-          <input type="text" class="form-control" placeholder="Referencia">
-        </div>
+        <div class="col-md-6"><label class="form-label">Localidad</label><input type="text" id="localidad" class="form-control" placeholder="Localidad"></div>
+        <div class="col-md-6"><label class="form-label">Referencia</label><input type="text" id="referencia" class="form-control" placeholder="Referencia"></div>
       </div>
 
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Código Postal</label>
-          <input type="text" class="form-control" placeholder="Código Postal">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Municipio</label>
-          <input type="text" class="form-control" placeholder="Municipio">
-        </div>
+        <div class="col-md-6"><label class="form-label">Código Postal</label><input type="text" id="cp" class="form-control" placeholder="Código Postal"></div>
+        <div class="col-md-6"><label class="form-label">Municipio</label><input type="text" id="municipio" class="form-control" placeholder="Municipio"></div>
       </div>
 
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Estado o País</label>
-          <input type="text" class="form-control" placeholder="Estado o País">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Teléfono</label>
-          <input type="text" class="form-control" placeholder="Teléfono">
-        </div>
+        <div class="col-md-6"><label class="form-label">Estado o País</label><input type="text" id="estado" class="form-control" placeholder="Estado o País"></div>
+        <div class="col-md-6"><label class="form-label">Teléfono</label><input type="text" id="telefono" class="form-control" placeholder="Teléfono"></div>
       </div>
 
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Número de Ticket</label>
-          <input type="text" class="form-control" placeholder="Número de Ticket">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Total</label>
-          <input type="text" class="form-control" placeholder="Total">
-        </div>
+        <div class="col-md-6"><label class="form-label">Número de Ticket</label><input type="text" id="ticket" class="form-control" placeholder="Número de Ticket"></div>
+        <div class="col-md-6"><label class="form-label">Total</label><input type="text" id="total" class="form-control" placeholder="Total"></div>
       </div>
 
-      <div class="mb-4">
-        <label class="form-label">Correo Electrónico</label>
-        <input type="email" class="form-control" placeholder="Correo Electrónico">
-      </div>
+      <div class="mb-4"><label class="form-label">Correo Electrónico</label><input type="email" id="correo" class="form-control" placeholder="Correo Electrónico"></div>
 
       <div class="d-flex justify-content-center gap-3 mb-4">
-        <button type="button" class="btn btn-primary">Imprimir Factura</button>
+        <button type="button" class="btn btn-primary" onclick="generarPDF()">Imprimir Factura</button>
         <button type="button" class="btn btn-success">Enviar Factura</button>
       </div>
     </form>
   </div>
-  
+
   <script src="bootstrap/bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
   <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-  navigator.serviceWorker.register('./service-worker.js')
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(function (registration) {
+            console.log('Service Worker registrado con éxito:', registration.scope);
+          })
+          .catch(function (error) {
+            console.log('Error al registrar el Service Worker:', error);
+          });
+      });
+    }
 
+    async function generarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
 
+      const rfc = document.getElementById("rfc").value;
+      const razon = document.getElementById("razonSocial").value;
+      const regimen = document.getElementById("regimen").value;
+      const calle = document.getElementById("calle").value;
+      const numExt = document.getElementById("numExt").value;
+      const numInt = document.getElementById("numInt").value;
+      const colonia = document.getElementById("colonia").value;
+      const localidad = document.getElementById("localidad").value;
+      const referencia = document.getElementById("referencia").value;
+      const cp = document.getElementById("cp").value;
+      const municipio = document.getElementById("municipio").value;
+      const estado = document.getElementById("estado").value;
+      const telefono = document.getElementById("telefono").value;
+      const ticket = document.getElementById("ticket").value;
+      const total = document.getElementById("total").value;
+      const correo = document.getElementById("correo").value;
 
-        .then(function (registration) {
-          console.log('Service Worker registrado con éxito:', registration.scope);
-        })
-        .catch(function (error) {
-          console.log('Error al registrar el Service Worker:', error);
-        });
-    });
-  }
-</script>
+      const fecha = new Date().toLocaleDateString();
 
+      doc.setFontSize(12);
+      doc.text("Mi Empresa S.A.", 14, 20);
+      doc.text(`RUC: ${rfc}`, 14, 28);
+      doc.text(`Dirección: ${calle} ${numExt}, ${colonia}, ${municipio}, ${estado}`, 14, 36);
+      doc.text(`Tel: ${telefono}`, 14, 44);
+
+      doc.text(`Factura N°: ${ticket}`, 150, 20);
+      doc.text(`Fecha: ${fecha}`, 150, 28);
+
+      doc.setFontSize(14);
+      doc.text("Cliente", 14, 60);
+      doc.setFontSize(12);
+      doc.text(`Nombre: ${razon}`, 14, 68);
+      doc.text(`Dirección: ${calle} ${numExt} ${numInt}, ${colonia}, ${localidad}, ${cp}`, 14, 76);
+      doc.text(`Referencia: ${referencia}`, 14, 84);
+      doc.text(`Tel: ${telefono}`, 14, 92);
+      doc.text(`Correo: ${correo}`, 14, 100);
+      doc.text(`Régimen: ${regimen}`, 14, 108);
+
+      doc.setFontSize(14);
+      doc.text("Detalle de Productos", 14, 120);
+
+      doc.autoTable({
+        startY: 125,
+        head: [['Descripción', 'Cantidad', 'Precio Unitario', 'Subtotal']],
+        body: [
+          ['Producto A', '2', '$10.00', '$20.00'],
+          ['Producto B', '1', '$15.00', '$15.00']
+        ],
+        theme: 'grid',
+        headStyles: { fillColor: [240, 240, 240] }
+      });
+
+      const finalY = doc.lastAutoTable.finalY;
+      doc.setFontSize(12);
+      doc.text(`Total: $${total}`, 150, finalY + 10);
+
+      doc.setFontSize(10);
+      doc.text("¡Gracias por su compra!", 14, finalY + 30);
+      doc.text("Esta factura fue generada electrónicamente y no requiere firma.", 14, finalY + 36);
+
+      // 👇 Agregado: generar archivo XML
+      const dataXML = {
+        rfc, razon, regimen, calle, numExt, numInt, colonia,
+        localidad, referencia, cp, municipio, estado,
+        telefono, correo, ticket, total, fecha
+      };
+      generarXMLFactura(dataXML);
+
+      doc.save("factura.pdf");
+    }
+
+    // 👇 Agregado: función para generar el archivo XML
+    function generarXMLFactura(data) {
+      const xmlContent = `
+<factura>
+  <cliente>
+    <rfc>${data.rfc}</rfc>
+    <razonSocial>${data.razon}</razonSocial>
+    <regimen>${data.regimen}</regimen>
+    <direccion>
+      <calle>${data.calle}</calle>
+      <numExt>${data.numExt}</numExt>
+      <numInt>${data.numInt}</numInt>
+      <colonia>${data.colonia}</colonia>
+      <localidad>${data.localidad}</localidad>
+      <referencia>${data.referencia}</referencia>
+      <cp>${data.cp}</cp>
+      <municipio>${data.municipio}</municipio>
+      <estado>${data.estado}</estado>
+    </direccion>
+    <telefono>${data.telefono}</telefono>
+    <correo>${data.correo}</correo>
+  </cliente>
+  <ticket>${data.ticket}</ticket>
+  <fecha>${data.fecha}</fecha>
+  <total>${data.total}</total>
+  <productos>
+    <producto>
+      <descripcion>Producto A</descripcion>
+      <cantidad>2</cantidad>
+      <precioUnitario>10.00</precioUnitario>
+      <subtotal>20.00</subtotal>
+    </producto>
+    <producto>
+      <descripcion>Producto B</descripcion>
+      <cantidad>1</cantidad>
+      <precioUnitario>15.00</precioUnitario>
+      <subtotal>15.00</subtotal>
+    </producto>
+  </productos>
+</factura>`.trim();
+
+      const blob = new Blob([xmlContent], { type: 'application/xml' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'factura.xml';
+      link.click();
+    }
+  </script>
 </body>
 </html>
