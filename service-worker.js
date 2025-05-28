@@ -13,7 +13,6 @@ const URLS_TO_CACHE = [
 
 
 
-// Instala el service worker y guarda archivos en caché
 self.addEventListener('install', function (event) {
   console.log('[Service Worker] Instalando y cacheando archivos...');
   event.waitUntil(
@@ -25,7 +24,7 @@ self.addEventListener('install', function (event) {
   self.skipWaiting();
 });
 
-// Activa el service worker y limpia cachés viejas si existen
+
 self.addEventListener('activate', function (event) {
   console.log('[Service Worker] Activado');
   event.waitUntil(
@@ -42,7 +41,7 @@ self.addEventListener('activate', function (event) {
   self.clients.claim();
 });
 
-// Intercepta peticiones y sirve desde caché si no hay internet
+
 self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request)
