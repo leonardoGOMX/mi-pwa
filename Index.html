@@ -170,7 +170,7 @@
       doc.text("¡Gracias por su compra!", 14, finalY + 30);
       doc.text("Esta factura fue generada electrónicamente y no requiere firma.", 14, finalY + 36);
 
-      // 👇 Agregado: generar archivo XML
+
       const dataXML = {
         rfc, razon, regimen, calle, numExt, numInt, colonia,
         localidad, referencia, cp, municipio, estado,
@@ -181,7 +181,7 @@
       doc.save("factura.pdf");
     }
 
-    // 👇 Agregado: función para generar el archivo XML
+   
     function generarXMLFactura(data) {
       const xmlContent = `
 <factura>
